@@ -6,11 +6,11 @@ class Welcome extends React.Component {
         return (
             <div>
                 <div className="header">
-                    <h1>Hello World : Yet Another BoilerPlate!</h1>
+                    <h1>This is index2!</h1>
                 </div>
             </div>
         );
     }
 }
 
-ReactDOM.render(<Welcome />, document.getElementById('app'));
+ReactDOM.render(<Welcome />, document.getElementById('app2'));

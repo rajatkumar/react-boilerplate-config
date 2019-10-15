@@ -3,13 +3,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const PacktrackerPlugin = require('@packtracker/webpack-plugin');
 const webpack = require('webpack');
 module.exports = {
-    devtool: 'source-map',
+    //devtool: 'source-map',
     performance: {
         hints: 'warning'
     },
+    devtool: false,
     optimization: {
-        runtimeChunk: {
-            name: entrypoint => `runtimechunk~${entrypoint.name}`
+        runtimeChunk: 'single',
+        splitChunks: {
+            chunks: 'all'
         }
     },
     // optimization: {
@@ -26,16 +28,15 @@ module.exports = {
     //         }
     //     }
     // },
-    entry: './src/index.js',
+    entry: { file1: './src/index2.js', file2: './src/index.js' },
     output: {
         path: path.join(__dirname, 'build'),
-        publicPath: '/',
-        filename: 'bundle.js'
+        publicPath: '/'
     },
-    devServer: {
-        contentBase: './build',
-        hot: true
-    },
+    // devServer: {
+    //     contentBase: './build',
+    //     hot: true
+    // },
     module: {
         rules: [
             {
@@ -52,12 +53,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: path.resolve('./index.html')
-        }),
-        new webpack.HotModuleReplacementPlugin(),
-        new PacktrackerPlugin({
-            project_token: 'e345d9d7-0442-4e09-8a2d-581c5c716266',
-            upload: true,
-            fail_build: true
         })
+        //new webpack.HotModuleReplacementPlugin()
     ]
 };
