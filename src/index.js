@@ -6,7 +6,7 @@ class Welcome extends React.Component {
         return (
             <div>
                 <div className="header">
-                    <h1>Hello World : Yet Another BoilerPlate</h1>
+                    <h1>Yet Another BoilerPlate</h1>
                 </div>
             </div>
         );
